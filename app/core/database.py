@@ -12,7 +12,7 @@ class DataStore:
             id="U001",
             name="Jan Kowalski",
             username="user1",
-            password="Pass123"
+            password="pass123"
         ))
 
 store = DataStore() # Przypisanie bazy danych do zmiennej

@@ -1,4 +1,5 @@
 from app.utils.helpers import clear_screen
+from app.cli.auth_cli import login_screen
 
 
 def main():
@@ -15,7 +16,9 @@ def main():
         choice = int(input("\nWybierz opcję: "))
 
         if choice == 1:
-            pass # login_screen
+            user = login_screen()
+            if user:
+                pass # user_panel(user)
         if choice == 2:
             pass # register_screen
         if choice == 3:

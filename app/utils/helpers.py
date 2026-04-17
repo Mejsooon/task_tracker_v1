@@ -8,8 +8,8 @@ def get_next_id(prefix: str, items: list):
 
     only_numbers = []
     for item in items:
-        if item.startswith(prefix):
-            only_numbers.append(int(item[1:])) # Wycinam pierwszy znak (U) i zwracam samą liczbę
+        if item.id.startswith(prefix):
+            only_numbers.append(int(item.id[1:])) # Wycinam pierwszy znak (U) i zwracam samą liczbę
 
     max_number = max(only_numbers)
     return f"{prefix}{max_number + 1:03d}"

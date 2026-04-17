@@ -10,6 +10,7 @@ def main():
         print("(1) ZALOGUJ SIĘ")
         print("(2) ZAREJESTRUJ SIĘ")
         print("(3) WYJDŹ")
+        print("\nDEMO UŻYTKOWNIK: user1 / pass123 (Jan Kowalski)")
 
         choice = int(input("\nWybierz opcję: "))
 

@@ -1,0 +1,30 @@
+from app.utils.helpers import clear_screen
+
+
+def main():
+    while True:
+        print("\n" + "=" * 60)
+        print("TASK TRACKER")
+        print("=" * 60)
+        print("\nMENU GŁÓWNE")
+        print("(1) ZALOGUJ SIĘ")
+        print("(2) ZAREJESTRUJ SIĘ")
+        print("(3) WYJDŹ")
+
+        choice = int(input("\nWybierz opcję: "))
+
+        if choice == 1:
+            pass # login_screen
+        if choice == 2:
+            pass # register_screen
+        if choice == 3:
+            clear_screen()
+            print("Dziękujemy za skorzystanie z aplikacji.")
+            break
+        else:
+            print("\n❌ Nieprawidłowa opcja.")
+            input("\nNaciśnij Enter...")
+
+
+if __name__ == "__main__":
+    main()

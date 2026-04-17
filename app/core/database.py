@@ -5,6 +5,7 @@ class DataStore:
     def __init__(self):
         self.users: List[User] = []
         self.tasks: List[Task] = []
+        self._init_demo_users()
 
     def _init_demo_users(self):
         self.users.append(User(
@@ -13,7 +14,5 @@ class DataStore:
             username="user1",
             password="Pass123"
         ))
-
-    _init_demo_users()
 
 store = DataStore() # Przypisanie bazy danych do zmiennej

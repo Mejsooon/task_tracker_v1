@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import List
 from app.models.models import User, Task
 
 class DataStore:

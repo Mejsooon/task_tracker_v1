@@ -1,5 +1,6 @@
 from app.models.models import User
-from app.utils.helpers import clear_screen
+from app.utils.helpers import clear_screen, read_multiline
+from app.services import task_service
 
 def user_panel(user: User):
     while True:
@@ -23,3 +24,20 @@ def user_panel(user: User):
         else:
             print("\n❌ Nieprawidłowa opcja.")
             input("\nNaciśnij Enter...")
+
+
+def _create_task(user: User):
+    clear_screen()
+    print("NOWE ZADANIE EKSPOZYCYJNE")
+    print("=" * 60)
+
+    try:
+        difficulty = int(input("Trudność zadania (1-10): ")).strip()
+    except ValueError:
+        difficulty = 0
+
+    description = read_multiline("Opis zadania (zakończ pustą linią): ")
+
+    ok, msg = task_service.create_task(user, difficulty, description)
+    print(f"\n{'✅' if ok else '❌'} {msg}")
+    input("\nNaciśnij Enter...")

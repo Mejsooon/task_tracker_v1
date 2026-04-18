@@ -32,7 +32,7 @@ def _create_task(user: User):
     print("=" * 60)
 
     try:
-        difficulty = int(input("Trudność zadania (1-10): ")).strip()
+        difficulty = int(input("Trudność zadania (1-10): ").strip())
     except ValueError:
         difficulty = 0
 

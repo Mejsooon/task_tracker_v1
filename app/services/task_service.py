@@ -23,3 +23,11 @@ def create_task(user: User, difficulty: int, description: str ) -> tuple[bool, s
 
 def find_active_tasks(user_id):
     return task_repository.find_by_id_and_status(user_id, "active")
+
+
+def find_completed_tasks(user_id):
+    return task_repository.find_by_id_and_status(user_id, "completed")
+
+
+def complete_task(task: Task):
+    task.status = "completed"

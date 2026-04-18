@@ -14,11 +14,11 @@ def user_panel(user: User):
         user_choice = input("Wybierz opcję: ")
 
         if user_choice == "1":
-            pass # _create_task
+            _create_task(user)
         elif user_choice == "2":
-            pass # _view_active_task
+            _view_active_task(user)
         elif user_choice == "3":
-            pass # _task_history
+            _view_history(user)
         elif user_choice == "4":
             break
         else:
@@ -68,3 +68,39 @@ def _view_active_task(user: User):
         print("\n❌ Nieprawidłowy wybór.")
         input("\nNaciśnij Enter...")
         return
+
+    _read_task(user, task)
+
+
+def _read_task(user: User, task):
+    clear_screen()
+    print(f"ZADANIE {task.id}")
+    print("=" * 60)
+    print(f"Poziom trudności: {task.difficulty_level}/10")
+    print("1. Oznacz jako wykonane")
+    print("2. Powrót")
+
+    if input("Wybierz opcję: ").strip() == "1":
+        _complete_task(user, task)
+
+
+def _complete_task(user: User, task):
+    clear_screen()
+    task_service.complete_task(task)
+    print("\n✅ Zadanie zostało oznaczone jako wykonane.")
+    input("\nNaciśnij Enter...")
+
+
+def _view_history(user: User):
+    clear_screen()
+    print("HISTORIA ZADAŃ")
+    print("=" * 60)
+
+    tasks = task_service.find_completed_tasks(user.id)
+    if not tasks:
+        print("❌ Nie masz żadnych zadań")
+        input("Naciśnij Enter...")
+        return
+
+    for idx, task in enumerate(tasks, 1):
+        print(f"{idx}. {task.title} {task.difficulty_level} | {task.description}")

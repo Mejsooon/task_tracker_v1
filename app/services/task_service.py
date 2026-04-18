@@ -4,7 +4,7 @@ from app.utils.helpers import get_next_id
 from app.repositories import task_repository
 
 
-def create_task(user: User, difficulty: int, description: str ) -> tuple[bool, str]:
+def create_task(user: User, difficulty: int, description: str, notes: str) -> tuple[bool, str]:
     if not (1 <= difficulty <= 10):
         return None, "❌ Poziom trudności musi być między 1 a 10."
     if not description:
@@ -15,6 +15,7 @@ def create_task(user: User, difficulty: int, description: str ) -> tuple[bool, s
         user_id=user.id,
         task_difficulty=difficulty,
         task_description=description,
+        additional_notes=notes
     )
 
     task_repository.save(new_task)

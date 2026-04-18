@@ -37,8 +37,9 @@ def _create_task(user: User):
         difficulty = 0
 
     description = read_multiline("Opis zadania (zakończ pustą linią): ")
+    notes = read_multiline("Dodatkowe notatki (zakończ pustą linią): ")
 
-    ok, msg = task_service.create_task(user, difficulty, description)
+    ok, msg = task_service.create_task(user, difficulty, description, notes)
     print(f"\n{'✅' if ok else '❌'} {msg}")
     input("\nNaciśnij Enter...")
 
@@ -77,7 +78,8 @@ def _read_task(user: User, task):
     print(f"ZADANIE {task.id}  |  {task.task_description}")
     print("=" * 60)
     print(f"Poziom trudności: {task.task_difficulty}/10")
-    print("1. Oznacz jako wykonane")
+    print(f"Notatki: {task.additional_notes}")
+    print("\n1. Oznacz jako wykonane")
     print("2. Powrót")
 
     if input("Wybierz opcję: ").strip() == "1":
@@ -104,5 +106,6 @@ def _view_history(user: User):
 
     for idx, task in enumerate(tasks, 1):
         print(f"{idx}. {task.task_description} -> {task.task_difficulty}/10")
+        print(f"{task.additional_notes}")
 
     input("\n\nNaciśnij Enter, aby wrócić...")

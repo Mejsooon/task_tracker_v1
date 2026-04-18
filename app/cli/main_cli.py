@@ -8,10 +8,10 @@ def user_panel(user: User):
         print(f"PROFIL UŻYTKOWNIKA: {user.name}")
         print("(1) Utwórz nowe zadanie")
         print("(2) Aktywne zadania")
-        print("(3) Histori zadań")
+        print("(3) Historia zadań")
         print("(4) Wyloguj się")
 
-        user_choice = input("Wybierz opcję: ")
+        user_choice = input("\nWybierz opcję: ")
 
         if user_choice == "1":
             _create_task(user)
@@ -50,15 +50,15 @@ def _view_active_task(user: User):
 
     tasks = task_service.find_active_tasks(user.id)
     if not tasks:
-        print("❌ Nie masz żadnych zadań")
+        print("\n❌ Nie masz żadnych zadań")
         input("Naciśnij Enter...")
         return
 
     for idx, task in enumerate(tasks, 1):
-        print(f"{idx}. {task.title}")
+        print(f"{idx}. {task.task_description}")
 
     try:
-        choice = int(input("Wybierz zadanie (0 - powrót): ").strip())
+        choice = int(input("\nWybierz zadanie (0 - powrót): ").strip())
         if choice == 0:
             return
         if not (1 <= choice <= len(tasks)):
@@ -74,9 +74,9 @@ def _view_active_task(user: User):
 
 def _read_task(user: User, task):
     clear_screen()
-    print(f"ZADANIE {task.id}")
+    print(f"ZADANIE {task.id}  |  {task.task_description}")
     print("=" * 60)
-    print(f"Poziom trudności: {task.difficulty_level}/10")
+    print(f"Poziom trudności: {task.task_difficulty}/10")
     print("1. Oznacz jako wykonane")
     print("2. Powrót")
 
@@ -103,4 +103,6 @@ def _view_history(user: User):
         return
 
     for idx, task in enumerate(tasks, 1):
-        print(f"{idx}. {task.title} {task.difficulty_level} | {task.description}")
+        print(f"{idx}. {task.task_description} -> {task.task_difficulty}/10")
+
+    input("\n\nNaciśnij Enter, aby wrócić...")

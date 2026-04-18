@@ -4,7 +4,7 @@ from app.core.database import store
 
 def save(task: Task):
     if task not in store.users:
-        store.users.append(task)
+        store.tasks.append(task)
 
 
 def find_by_id_and_status(user_id: str, status: str):

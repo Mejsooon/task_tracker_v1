@@ -1,5 +1,6 @@
 from app.utils.helpers import clear_screen
 from app.cli.auth_cli import login_screen, register_screen
+from app.cli.main_cli import user_panel
 
 
 def main():
@@ -18,7 +19,7 @@ def main():
         if choice == 1:
             user = login_screen()
             if user:
-                pass # user_panel(user)
+                user_panel(user)
         elif choice == 2:
             register_screen()
         elif choice == 3:

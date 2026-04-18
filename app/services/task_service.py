@@ -19,3 +19,7 @@ def create_task(user: User, difficulty: int, description: str ) -> tuple[bool, s
 
     task_repository.save(new_task)
     return True, f"Zadanie {new_task.id} zostało poprawnie utworzone."
+
+
+def find_active_tasks(user_id):
+    return task_repository.find_by_id_and_status(user_id, "active")

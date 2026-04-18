@@ -16,7 +16,7 @@ def user_panel(user: User):
         if user_choice == "1":
             pass # _create_task
         elif user_choice == "2":
-            pass # _active_task
+            pass # _view_active_task
         elif user_choice == "3":
             pass # _task_history
         elif user_choice == "4":
@@ -41,3 +41,30 @@ def _create_task(user: User):
     ok, msg = task_service.create_task(user, difficulty, description)
     print(f"\n{'✅' if ok else '❌'} {msg}")
     input("\nNaciśnij Enter...")
+
+
+def _view_active_task(user: User):
+    clear_screen()
+    print("AKTYWNE ZADANIA")
+    print("=" * 60)
+
+    tasks = task_service.find_active_tasks(user.id)
+    if not tasks:
+        print("❌ Nie masz żadnych zadań")
+        input("Naciśnij Enter...")
+        return
+
+    for idx, task in enumerate(tasks, 1):
+        print(f"{idx}. {task.title}")
+
+    try:
+        choice = int(input("Wybierz zadanie (0 - powrót): ").strip())
+        if choice == 0:
+            return
+        if not (1 <= choice <= len(tasks)):
+            raise ValueError
+        task = tasks[choice - 1] # Wybór zadania zgodny z indeksami, czyli od zera (0)
+    except ValueError:
+        print("\n❌ Nieprawidłowy wybór.")
+        input("\nNaciśnij Enter...")
+        return

@@ -13,3 +13,15 @@ def get_next_id(prefix: str, items: list):
 
     max_number = max(only_numbers)
     return f"{prefix}{max_number + 1:03d}"
+
+
+def read_multiline(prompt: str):
+    if prompt:
+        print(prompt)
+    lines = []
+    while True:
+        line = input()
+        if not line:
+            break
+        lines.append(line)
+    return "\n".join(lines)

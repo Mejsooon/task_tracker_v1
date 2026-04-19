@@ -6,7 +6,7 @@ Simple task tracker with built-in database and console (UI) in (CLI)
 
 ### PROJECT STRUCTURE
 
-- Create a project structure with (**clean code architecture**)
+- Structure based on **clean code architecture**
     - (services) as complete logic and (repositories) only for getting data from datbases
 
 ```bash

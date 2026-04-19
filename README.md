@@ -4,7 +4,10 @@ Simple task tracker with built-in database and console (UI) in (CLI)
 
 ---
 
-### Things i Learned
+### PROJECT STRUCTURE
+
+- Create a project structure with (**clean code architecture**)
+    - (services) as complete logic and (repositories) only for getting data from datbases
 
 ```bash
 task_tracker_v1/
@@ -13,7 +16,7 @@ task_tracker_v1/
     ├── models/
     │   └── models.py # @dataclasses
     ├── core/
-    │   └── datastore.py # Wbudowana baza danych
+    │   └── datastore.py # built-in database
     ├── utils/
     │   └── helpers.py
     ├── repositories/
